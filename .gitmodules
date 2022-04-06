@@ -1,0 +1,6 @@
+[submodule "ntsim"]
+	path = ntsim
+	url = http://192.168.0.158:3000/alan/O1-interface-sim.git
+[submodule "app/ONOS-DMaaP-agent"]
+	path = app/ONOS-DMaaP-agent
+	url = http://192.168.0.158:3000/alan/ONOS-DMaaP-agent.git
