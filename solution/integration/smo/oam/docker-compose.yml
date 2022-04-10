@@ -25,7 +25,7 @@ services:
       - WEBPROTOCOL=HTTPS
       - WEBPORT=${SDNC_WEB_PORT}
       - SDNRPROTOCOL=http
-      - SDNRHOST=sdnr
+      - SDNRHOST=agent #sdnr
       - SDNRPORT=${SDNC_REST_PORT}
       - SSL_CERT_DIR=/opt/app/osaaf/local/certs
       - SSL_CERTIFICATE=cert.pem
@@ -38,44 +38,33 @@ services:
       dmz:
       smo:
 
-  sdnr:
-    image: ${SDNC_IMAGE}
-    container_name: sdnr
+  agent:
+    image: ${SDNC_WEB_AGENT_IMAGE}
+    container_name: odlux-onos-agent
     ports:
-      - ${SDNC_REST_PORT}:8181
-      - 8101:8101
-      - 6666:6666
-      - 4335:4335
+      - 8000:8000
     environment:
-      - SDNC_CONFIG_DIR=/opt/onap/ccsdk/data/properties
-      - ODL_CERT_DIR=${SDNC_CERT_DIR}
-      - ENABLE_ODL_CLUSTER=false
-      - SDNC_REPLICAS=0
-      - CCSDK_REPLICAS=0
-      - DOMAIN=""
-      - SDNRWT=true
-      - SDNRONLY=true
-      - SDNRINIT=true
-      - SDNRDM=true
-      - SDNRDBURL=http://persistence:9200
-      - A1_ADAPTER_NORTHBOUND=false
-      - ODL_ADMIN_PASSWORD=${ADMIN_PASSWORD}
-      - ENABLE_OAUTH=true
-      - SDNR_NETCONF_CALLHOME_ENABLED=true
-      - JAVA_OPTS=-Xms256m -Xmx4g
-      - IDENTITY_PROVIDER_URL=${IDENTITY_PROVIDER_URL}
-      - SDNC_WEB_URL=https://sdnc-web:${SDNC_WEB_PORT}
-    volumes:
-      - ./sdnr/oauth-provider.config.json:/opt/opendaylight/etc/oauth-provider.config.json
-      - ./sdnr/devicemanager.properties:/opt/opendaylight/etc/devicemanager.properties
-      - ./sdnr/mountpoint-registrar.properties:/opt/opendaylight/etc/mountpoint-registrar.properties
-      - ./sdnr/certs/certs.properties:${SDNC_CERT_DIR}/certs.properties
-      - ./sdnr/certs/keys0.zip:${SDNC_CERT_DIR}/keys0.zip
+      ONOS_IP: ${SDNR_ONOS_IPv4}
     networks:
       dmz:
       smo:
       default:
         ipv6_address: ${SDNC_OAM_IPv6}
+
+  onos:
+    image: onosproject/onos:2.6-latest
+    container_name: onos
+    ports:
+      - 8181:8181
+      - 8101:8101
+      - 5005:5005
+      - 830:830
+    networks:
+      dmz:
+      smo:
+      default:
+        ipv4_address: ${SDNR_ONOS_IPv4}
+        ipv6_address: 2001:db8:1:50::4
 
   ves-collector:
     image: ${VES_COLLECTOR_IMAGE}
@@ -104,5 +93,7 @@ networks:
     ipam:
       driver: default
       config:
+      - subnet: 172.26.0.0/24
+        gateway: 172.26.0.1
       - subnet:  ${NETWORK_SUBNET_OAM_IPv6}
         gateway: ${NETWORK_GATEWAY_OAM_IPv6}
