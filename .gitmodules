@@ -4,3 +4,7 @@
 [submodule "app/ONOS-DMaaP-agent"]
 	path = app/ONOS-DMaaP-agent
 	url = http://192.168.0.158:3000/alan/ONOS-DMaaP-agent.git
+[submodule "app/agent"]
+	path = app/agent
+	url = https://gitlab.com/ast9501/ODLUX-ONOS-agent.git
+	branch = master
