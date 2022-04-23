@@ -61,7 +61,8 @@ x-nf: &common_nf
 services:
   ntsim-ng-o-du-1122:
     <<: *common_nf
-    image: "${NEXUS3_DOCKER_REPO}nts-ng-o-ran-du:${NTS_BUILD_VERSION}"
+    #image: "${NEXUS3_DOCKER_REPO}nts-ng-o-ran-du:${NTS_BUILD_VERSION}"
+    image: "o-ran-sc/nts-ng-o-ran-du:${NTS_BUILD_VERSION}"
     container_name: ntsim-ng-o-du-1122
     hostname: highstreet-O-DU-1122
     volumes:
@@ -74,7 +75,8 @@ services:
 
   ntsim-ng-o-ru-fh-11221:
     <<: *common_nf
-    image: "${NEXUS3_DOCKER_REPO}nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
+    #image: "${NEXUS3_DOCKER_REPO}nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
+    image: "o-ran-sc/nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
     container_name: ntsim-ng-o-ru-fh-11221
     hostname: highstreet-O-RU-11221
     volumes:
@@ -89,7 +91,8 @@ services:
 
   ntsim-ng-o-ru-fh-11222:
     <<: *common_nf
-    image: "${NEXUS3_DOCKER_REPO}nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
+    #image: "${NEXUS3_DOCKER_REPO}nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
+    image: "o-ran-sc/nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
     container_name: ntsim-ng-o-ru-fh-11222
     hostname: highstreet-O-RU-11222
     volumes:
@@ -104,7 +107,8 @@ services:
 
   ntsim-ng-o-ru-fh-11223:
     <<: *common_nf
-    image: "${NEXUS3_DOCKER_REPO}nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
+    #image: "${NEXUS3_DOCKER_REPO}nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
+    image: "o-ran-sc/nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
     container_name: ntsim-ng-o-ru-fh-11223
     hostname: highstreet-O-RU-11223
     volumes:
@@ -117,20 +121,20 @@ services:
         <<: *common_env
         <<: *ru_env
 
-  ntsim-ng-topology-server:
-    <<: *common_nf
-    image: "${PUBLIC_DOCKER_REPO}smo-nts-ng-topology-server:${NTS_BUILD_VERSION}"
-    container_name: ntsim-ng-topology-server
-    hostname: highstreet-TAPI-topology-server
-    volumes:
-        - ./ntsim-ng-topology-server/config.json:/opt/dev/ntsim-ng/config/config.json
-        - ./ntsim-ng-topology-server/tapi-common-operational.xml:/opt/dev/deploy/data/tapi-common-operational.xml
-        - ./ntsim-ng-topology-server/tapi-common-running.xml:/opt/dev/deploy/data/tapi-common-running.xml
-    environment:
-        <<: *common_env
-        <<: *topo_env
-        SSH_CONNECTIONS: 1
-        TLS_CONNECTIONS: 0    
+  #ntsim-ng-topology-server:
+  #  <<: *common_nf
+  #  image: "${PUBLIC_DOCKER_REPO}smo-nts-ng-topology-server:${NTS_BUILD_VERSION}"
+  #  container_name: ntsim-ng-topology-server
+  #  hostname: highstreet-TAPI-topology-server
+  #  volumes:
+  #      - ./ntsim-ng-topology-server/config.json:/opt/dev/ntsim-ng/config/config.json
+  #      - ./ntsim-ng-topology-server/tapi-common-operational.xml:/opt/dev/deploy/data/tapi-common-operational.xml
+  #      - ./ntsim-ng-topology-server/tapi-common-running.xml:/opt/dev/deploy/data/tapi-common-running.xml
+  #  environment:
+  #      <<: *common_env
+  #      <<: *topo_env
+  #      SSH_CONNECTIONS: 1
+  #      TLS_CONNECTIONS: 0    
 networks:
     default:
         external:
