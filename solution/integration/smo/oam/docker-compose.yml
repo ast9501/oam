@@ -53,7 +53,7 @@ services:
         ipv6_address: ${SDNC_OAM_IPv6}
 
   onos:
-    image: onosproject/onos:2.2.0
+    image: alan0415/onos:2.2 #onosproject/onos:2.2.0
     container_name: onos
     ports:
       - 8181:8181
