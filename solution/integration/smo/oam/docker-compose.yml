@@ -53,13 +53,14 @@ services:
         ipv6_address: ${SDNC_OAM_IPv6}
 
   onos:
-    image: alan0415/onos:2.2 #onosproject/onos:2.2.0
+    image: alan0415/onos:2.2-u3 #alan0415/onos:2.2 #onosproject/onos:2.2.0
     container_name: onos
     ports:
       - 8181:8181
       - 8101:8101
       - 5005:5005
       - 830:830
+      - 4334:4334
     environment:
       - AGENT_IP=${SDNC_OAM_IPv4}
       - AGENT_PORT=8000
