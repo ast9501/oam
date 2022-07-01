@@ -8,3 +8,6 @@
 	path = app/agent
 	url = https://gitlab.com/ast9501/ODLUX-ONOS-agent.git
 	branch = master
+[submodule "app/Netconf-logger"]
+	path = app/Netconf-logger
+	url = https://github.com/ast9501/Netconf-logger.git
