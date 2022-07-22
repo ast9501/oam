@@ -61,8 +61,8 @@ x-nf: &common_nf
 services:
   ntsim-ng-o-du-1122:
     <<: *common_nf
-    #image: "${NEXUS3_DOCKER_REPO}nts-ng-o-ran-du:${NTS_BUILD_VERSION}"
-    image: "o-ran-sc/nts-ng-o-ran-du:${NTS_BUILD_VERSION}"
+    image: "${NEXUS3_DOCKER_REPO}nts-ng-o-ran-du:${NTS_BUILD_VERSION}"
+    #image: "o-ran-sc/nts-ng-o-ran-du:${NTS_BUILD_VERSION}"
     container_name: ntsim-ng-o-du-1122
     hostname: highstreet-O-DU-1122
     volumes:
@@ -75,8 +75,8 @@ services:
 
   ntsim-ng-o-ru-fh-11221:
     <<: *common_nf
-    #image: "${NEXUS3_DOCKER_REPO}nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
-    image: "o-ran-sc/nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
+    image: "${NEXUS3_DOCKER_REPO}nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
+    #image: "o-ran-sc/nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
     container_name: ntsim-ng-o-ru-fh-11221
     hostname: highstreet-O-RU-11221
     volumes:
@@ -91,8 +91,8 @@ services:
 
   ntsim-ng-o-ru-fh-11222:
     <<: *common_nf
-    #image: "${NEXUS3_DOCKER_REPO}nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
-    image: "o-ran-sc/nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
+    image: "${NEXUS3_DOCKER_REPO}nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
+    #image: "o-ran-sc/nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
     container_name: ntsim-ng-o-ru-fh-11222
     hostname: highstreet-O-RU-11222
     volumes:
@@ -107,8 +107,8 @@ services:
 
   ntsim-ng-o-ru-fh-11223:
     <<: *common_nf
-    #image: "${NEXUS3_DOCKER_REPO}nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
-    image: "o-ran-sc/nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
+    image: "${NEXUS3_DOCKER_REPO}nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
+    #image: "o-ran-sc/nts-ng-o-ran-ru-fh:${NTS_BUILD_VERSION}"
     container_name: ntsim-ng-o-ru-fh-11223
     hostname: highstreet-O-RU-11223
     volumes:
