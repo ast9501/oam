@@ -70,6 +70,13 @@ onos logs (apps activated)
 03:15:06.214 INFO  [AppComponent] Started
 ```
 
+## Start up devices
+
+```
+cd oam/solution/integration
+sudo docker-compose -f network/docker-compose.yml up -d
+```
+
 ## Setup RU callhome (manually)
 * Get RU ssh-key
 ``` 
