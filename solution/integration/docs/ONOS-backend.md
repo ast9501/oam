@@ -11,10 +11,49 @@ sudo docker-compose -f smo/common/docker-compose.yml up -d
 python3 smo/common/identity/config.py
 ```
 ## Deploy oam components
+* get dmaap ip
+```
+sudo docker inspect onap-dmaap
+```
+
+```
+...
+            "Networks": {
+                "smo": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "b7d1c08f924a",
+                        "dmaap"
+                    ],
+                    "NetworkID": "820c87802f8302f5568d38c32f215c9d85f7f47256cc6090808a9ac748920dbf",
+                    "EndpointID": "ca0a6a95c11960f0398c4c748ec72bacdc67041d68410ca79b31134a60177749",
+                    "Gateway": "172.19.0.1",
+                    "IPAddress": "172.19.0.6",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "2001:db8:1:40::1",
+                    "GlobalIPv6Address": "2001:db8:1:40::6",
+                    "GlobalIPv6PrefixLen": 96,
+                    "MacAddress": "02:42:ac:13:00:06",
+                    "DriverOpts": null
+                }
+            }
+...
+```
+the dmaap ip is 172.19.0.6
+
+* set dmaap ip
+```
+vim smo/oam/docker-compose.yml
+```
+modify dmaap_ip (Line 67)
+
+* start up oam
 ```
 sudo docker-compose -f smo/oam/docker-compose.yml up -d
 ```
 
+### Enable onos apps
 * Enable ONOS netconf apps
 ```
 # Connect to onos (password: karaf)
