@@ -64,6 +64,7 @@ services:
     environment:
       - AGENT_IP=${SDNC_OAM_IPv4}
       - AGENT_PORT=8000
+      - dmaap_ip=172.19.0.6
     networks:
       dmz:
       smo:
